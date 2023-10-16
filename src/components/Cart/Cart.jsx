@@ -7,14 +7,14 @@ const Cart = () => {
   useEffect(() => {
     const loadData = async () => {
       const res = await fetch(
-        `https://openapi.programming-hero.com/api/ai/tools`
+        `aiData.json`
       );
       const value = await res.json();
       setData(value.data.tools);
     };
     loadData();
   }, []);
-  console.log(data);
+//  console.log(data);
   return (
   <>
     <div className="flex flex-wrap items-center justify-center gap-6 my-6">
