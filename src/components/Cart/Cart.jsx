@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SingleCart from "./SingleCart";
+import Button from "../Button/Button";
 
 const Cart = () => {
   const [data, setData] = useState([]);
+  const [showAll,setShowAll]=useState(false);
+
+  const handleShowAll = () => setShowAll(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -19,11 +23,17 @@ const Cart = () => {
   <>
     <div className="flex flex-wrap items-center justify-center gap-6 my-6">
     {
-        data.map((singleData,index) => {
+        data.slice(0,showAll? 12:6).map((singleData,index) => {
             return <SingleCart key={index} {...singleData}  />
         })
     }
     </div>
+    {
+      (!showAll) && <p className="mb-5" onClick={handleShowAll}>
+      <Button>Show All</Button>
+    </p>
+    }
+    
   </>
   );
 };
