@@ -1,14 +1,11 @@
 import React from "react";
+import Modal from "../Modal/Modal";
 
-const SingleCart = ({
-  image,
-  description,
-  features,
-  name,
-  links,
-  id,
-  published_in,
-}) => {
+const SingleCart = (props) => {
+  const {image, description, features, name, links, id, published_in} =props.singleData;
+//const [setUniqueId] =props.setUniqueId;
+
+  const handleClickModal = (id) => {};
   return (
     <div className="">
       <div className="card w-96 bg-base-100 shadow-2xl">
@@ -18,7 +15,7 @@ const SingleCart = ({
         <div className="card-body">
           <p className="font-bold">Featchers</p>
           {features.map((feature, index) => (
-            <p>
+            <p key={index}>
               <span className="font-bold">{index + 1}</span>. {feature}
             </p>
           ))}
@@ -43,20 +40,26 @@ const SingleCart = ({
               </svg>
               <p>{published_in}</p>
             </div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 cursor-pointer	"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-              />
-            </svg>
+
+            <span onClick={() => props.setUniqueId(id)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 cursor-pointer "
+                onClick={() =>
+                  document.getElementById("my_modal_4").showModal()
+                }
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </span>
           </div>
         </div>
       </div>
