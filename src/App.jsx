@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Button>Sort By Date</Button>
+      
       <Cart></Cart>
       
     </>
